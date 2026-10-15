@@ -1,3 +1,10 @@
-name = "vibifiy-buttons"
-main = "src/index.js"
-compatibility_date = "2025-09-01"
+name = "alive-readme"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+# Static files (the generator page) are served free from /public.
+# The Worker only runs for /btn so only button images use your request quota.
+[assets]
+directory = "./public"
+binding = "ASSETS"
+run_worker_first = ["/btn", "/btn.svg"]
