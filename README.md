@@ -98,6 +98,11 @@ Alive-Readme
 
 `button-svg.js` is shared: the Worker uses it to serve images, and the maker page uses it to show your live preview.
 
+
+
+
+![Table](https://alive-readme-buttons.spookyminecraftgamer.workers.dev/table.svg?data=Option%7CWhat+it+does%7CDefault%0Atext%7CButton+label+upto+40+characters%7CButton%0Afill%7Csolid%2C+gradient+or+outline%7Csolid%0Aanim%7Cshine+or+pulse%7Cnone&theme=dark&head=9012d3&hfg=000000)
+
 Brand logos belong to their respective owners and are included only so you can link to those brands' pages.
 
 ---
