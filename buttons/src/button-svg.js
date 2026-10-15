@@ -22,15 +22,15 @@ Object.assign(ICONS, BRAND);
 const DEFAULTS = { text: "Button", bg: "6c63ff", fg: "", icon: "", ipath: "", style: "flat", size: "md", fill: "solid", anim: "", border: "" };
 const HEIGHT = { sm: 24, md: 32, lg: 40 };
 
-const hex = (v, d) => { v = String(v || "").replace(/^#/, ""); return /^([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v) ? "#" + v.toLowerCase() : d ? "#" + d : ""; };
-const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+export const hex = (v, d) => { v = String(v || "").replace(/^#/, ""); return /^([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v) ? "#" + v.toLowerCase() : d ? "#" + d : ""; };
+export const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const darken = (h, f = 0.62) => {
   let x = h.slice(1);
   if (x.length === 3) x = x.split("").map(c => c + c).join("");
   return "#" + [0, 2, 4].map(i => Math.round(parseInt(x.slice(i, i + 2), 16) * f).toString(16).padStart(2, "0")).join("");
 };
 const safePath = p => typeof p === "string" && p.length > 0 && p.length <= 3000 && /^[MmLlHhVvCcSsQqTtAaZz0-9eE.,\s-]+$/.test(p);
-const textWidth = (s, fs) => { let w = 0; for (const ch of s) w += /[il.,:;'|!]/.test(ch) ? .28 : ch === " " ? .35 : /[mwMW@]/.test(ch) ? .9 : /[A-Z]/.test(ch) ? .68 : /[0-9]/.test(ch) ? .64 : .58; return Math.ceil(w * fs * 1.12); };
+export const textWidth = (s, fs) => { let w = 0; for (const ch of s) w += /[il.,:;'|!]/.test(ch) ? .28 : ch === " " ? .35 : /[mwMW@]/.test(ch) ? .9 : /[A-Z]/.test(ch) ? .68 : /[0-9]/.test(ch) ? .64 : .58; return Math.ceil(w * fs * 1.12); };
 
 export function renderButton(o = {}) {
   const t = { ...DEFAULTS, ...o };
