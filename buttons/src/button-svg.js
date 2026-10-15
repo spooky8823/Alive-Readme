@@ -1,3 +1,4 @@
+import { BRAND } from "./brand-icons.js";
 // Single source of truth: used by the Worker (server) AND the generator page (preview).
 // Icon format: [viewBox, path, "s"?]. A third item "s" means stroke-style icon, otherwise filled.
 export const ICONS = {
@@ -15,9 +16,10 @@ export const ICONS = {
   heart: ["0 0 24 24", "M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z", "s"],
   play: ["0 0 24 24", "M5 3l14 9-14 9V3z", "s"],
 };
+Object.assign(ICONS, BRAND);
 
 // fg defaults to "" (auto): white, or the background colour for the outline fill.
-const DEFAULTS = { text: "Button", bg: "6c63ff", fg: "", icon: "", style: "flat", size: "md", fill: "solid", anim: "", border: "" };
+const DEFAULTS = { text: "Button", bg: "6c63ff", fg: "", icon: "", ipath: "", style: "flat", size: "md", fill: "solid", anim: "", border: "" };
 const HEIGHT = { sm: 24, md: 32, lg: 40 };
 
 const hex = (v, d) => { v = String(v || "").replace(/^#/, ""); return /^([0-9a-f]{3}|[0-9a-f]{6})$/i.test(v) ? "#" + v.toLowerCase() : d ? "#" + d : ""; };
@@ -27,6 +29,7 @@ const darken = (h, f = 0.62) => {
   if (x.length === 3) x = x.split("").map(c => c + c).join("");
   return "#" + [0, 2, 4].map(i => Math.round(parseInt(x.slice(i, i + 2), 16) * f).toString(16).padStart(2, "0")).join("");
 };
+const safePath = p => typeof p === "string" && p.length > 0 && p.length <= 3000 && /^[MmLlHhVvCcSsQqTtAaZz0-9eE.,\s-]+$/.test(p);
 const textWidth = (s, fs) => { let w = 0; for (const ch of s) w += /[il.,:;'|!]/.test(ch) ? .28 : ch === " " ? .35 : /[mwMW@]/.test(ch) ? .9 : /[A-Z]/.test(ch) ? .68 : /[0-9]/.test(ch) ? .64 : .58; return Math.ceil(w * fs * 1.12); };
 
 export function renderButton(o = {}) {
@@ -40,7 +43,7 @@ export function renderButton(o = {}) {
   const border = hex(t.border, "") || (fill === "outline" ? bg : "");
   const r = t.style === "pill" ? h / 2 : t.style === "rounded" ? 8 : 4;
   const fs = Math.round(h * .42), px = Math.round(h * .5), is = Math.round(h * .5), gap = Math.round(h * .3);
-  const ic = ICONS[t.icon], tw = textWidth(text, fs);
+  const ic = safePath(t.ipath) ? ["0 0 24 24", t.ipath] : ICONS[t.icon], tw = textWidth(text, fs);
   const w = px * 2 + (ic ? is + gap : 0) + tw;
 
   let x = px, body = "";
