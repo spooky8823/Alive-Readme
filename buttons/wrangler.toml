@@ -1,0 +1,3 @@
+name = "vibifiy-buttons"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
