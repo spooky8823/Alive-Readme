@@ -45,18 +45,7 @@ The first part (inside `![ ]( )`) is the button image. The part in the last brac
 
 Add these after `/btn.svg?` and join them with `&`. Colours are hex values **without** the `#`.
 
-| Option   | What it does                              | Values                                                                 | Default            |
-|----------|-------------------------------------------|------------------------------------------------------------------------|--------------------|
-| `text`   | Button label (up to 40 characters)        | any text, use `+` for spaces                                           | `Button`           |
-| `icon`   | Icon to the left of the text              | see the icon list below                                                | none               |
-| `bg`     | Background colour                         | e.g. `6c63ff`                                                          | `6c63ff`           |
-| `fg`     | Text and icon colour                      | e.g. `ffffff`                                                          | white (outline: `bg`) |
-| `fill`   | Background style                          | `solid`, `gradient`, `outline`                                         | `solid`            |
-| `style`  | Corner shape                              | `flat`, `rounded`, `pill`                                              | `flat`             |
-| `size`   | Button size                               | `sm`, `md`, `lg`                                                       | `md`               |
-| `border` | Border colour                             | e.g. `ffffff`                                                          | none               |
-| `anim`   | Animation                                 | `shine`, `pulse`                                                       | none               |
-| `ipath`  | Your own icon                             | an SVG path on a 24×24 grid, filled, up to 3000 characters             | none               |
+![Table](https://alive-readme-buttons.spookyminecraftgamer.workers.dev/table.svg?data=%7C+Option+++%7C+What+it+does++++++++++++++++++++++++++++++%7C+Values+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+Default++++++++++++%7C%0A%7C----------%7C-------------------------------------------%7C------------------------------------------------------------------------%7C--------------------%7C%0A%7C+%60text%60+++%7C+Button+label+%28up+to+40+characters%29++++++++%7C+any+text%2C+use+%60%2B%60+for+spaces+++++++++++++++++++++++++++++++++++++++++++%7C+%60Button%60+++++++++++%7C%0A%7C+%60icon%60+++%7C+Icon+to+the+left+of+the+text++++++++++++++%7C+see+the+icon+list+below++++++++++++++++++++++++++++++++++++++++++++++++%7C+none+++++++++++++++%7C%0A%7C+%60bg%60+++++%7C+Background+colour+++++++++++++++++++++++++%7C+e.g.+%606c63ff%60++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+%606c63ff%60+++++++++++%7C%0A%7C+%60fg%60+++++%7C+Text+and+icon+colour++++++++++++++++++++++%7C+e.g.+%60ffffff%60++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+white+%28outline%3A+%60bg%60%29+%7C%0A%7C+%60fill%60+++%7C+Background+style++++++++++++++++++++++++++%7C+%60solid%60%2C+%60gradient%60%2C+%60outline%60+++++++++++++++++++++++++++++++++++++++++%7C+%60solid%60++++++++++++%7C%0A%7C+%60style%60++%7C+Corner+shape++++++++++++++++++++++++++++++%7C+%60flat%60%2C+%60rounded%60%2C+%60pill%60++++++++++++++++++++++++++++++++++++++++++++++%7C+%60flat%60+++++++++++++%7C%0A%7C+%60size%60+++%7C+Button+size+++++++++++++++++++++++++++++++%7C+%60sm%60%2C+%60md%60%2C+%60lg%60+++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+%60md%60+++++++++++++++%7C%0A%7C+%60border%60+%7C+Border+colour+++++++++++++++++++++++++++++%7C+e.g.+%60ffffff%60++++++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+none+++++++++++++++%7C%0A%7C+%60anim%60+++%7C+Animation+++++++++++++++++++++++++++++++++%7C+%60shine%60%2C+%60pulse%60+++++++++++++++++++++++++++++++++++++++++++++++++++++++%7C+none+++++++++++++++%7C%0A%7C+%60ipath%60++%7C+Your+own+icon+++++++++++++++++++++++++++++%7C+an+SVG+path+on+a+24%C3%9724+grid%2C+filled%2C+up+to+3000+characters+++++++++++++%7C+none+++++++++++++++%7C&theme=dark&head=9012d3&hfg=000000)
 
 ### Icons
 
@@ -89,9 +78,6 @@ npm run deploy
 `button-svg.js` is shared: the Worker uses it to serve images, and the maker page uses it to show your live preview.
 
 
-
-
-![Table](https://alive-readme-buttons.spookyminecraftgamer.workers.dev/table.svg?data=Option%7CWhat+it+does%7CDefault%0Atext%7CButton+label+upto+40+characters%7CButton%0Afill%7Csolid%2C+gradient+or+outline%7Csolid%0Aanim%7Cshine+or+pulse%7Cnone&theme=dark&head=9012d3&hfg=000000)
 
 Brand logos belong to their respective owners and are included only so you can link to those brands' pages.
 
