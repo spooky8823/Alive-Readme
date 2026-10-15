@@ -1,3 +1,4 @@
-name = "vibifiy-buttons"
+name = "alive-readme-buttons"
 main = "src/index.js"
-compatibility_date = "2025-09-01"
+compatibility_date = "2026-10-01"
+workers_dev = true
