@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Button maker — Vibifiy</title>
+<title>Alive Readme: button maker</title>
 <style>
 :root{--bg:#0f0d1a;--card:#181528;--bd:#2a2545;--tx:#f0eeff;--mu:#9d94c4;--ac:#6c63ff}
 @media (prefers-color-scheme:light){:root{--bg:#f6f5ff;--card:#fff;--bd:#dcd8f5;--tx:#1d1a33;--mu:#6b6590}}
@@ -14,38 +14,43 @@ input[type=color]{padding:2px;height:38px}.row{display:flex;gap:10px}.row>*{flex
 .pv{display:flex;align-items:center;justify-content:center;min-height:90px;border-radius:10px;margin-bottom:10px}
 textarea{font-family:ui-monospace,Consolas,monospace;font-size:.8rem;height:64px;resize:vertical}
 button{margin-top:6px;padding:7px 12px;border:0;border-radius:8px;background:var(--ac);color:#fff;font-weight:600;cursor:pointer}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 #warn{display:none;background:var(--card);border:1px solid #e0a030;border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:.9rem}
 </style></head><body><main>
-<h1>Button maker</h1><p class="sub">Design a button, set where it links, copy the snippet into your README.</p>
+<h1>Alive Readme</h1><p class="sub">Design a button, set where it links, copy the snippet into your README.</p>
 <div id="warn"></div>
 <div class="layout">
 <section class="card">
-  <label>Button text</label><input id="text" value="Download VibiClaw" maxlength="40">
-  <label>Icon</label><select id="icon"></select>
-  <div class="row"><div><label>Background</label><input id="bg" type="color" value="#6c63ff"></div>
-  <div><label>Text color</label><input id="fg" type="color" value="#ffffff"></div></div>
-  <div class="row"><div><label>Shape</label><select id="style"><option>flat</option><option>rounded</option><option>pill</option></select></div>
-  <div><label>Size</label><select id="size"><option>sm</option><option selected>md</option><option>lg</option></select></div></div>
-  <label><input id="bd" type="checkbox" style="width:auto"> Border</label><input id="bdc" type="color" value="#ffffff">
-  <label>Where should it link? (https://…)</label><input id="to" value="https://github.com/spooky8823/Vibifiy/releases">
-  <label>Alt text (optional)</label><input id="alt">
+  <label for="text">Button text</label><input id="text" value="Read the docs" maxlength="40">
+  <label for="icon">Icon</label><select id="icon"></select>
+  <div class="row"><div><label for="bg">Background</label><input id="bg" type="color" value="#6c63ff"></div>
+  <div><label for="fg">Text colour</label><input id="fg" type="color" value="#ffffff"></div></div>
+  <div class="row"><div><label for="fill">Fill</label><select id="fill"><option>solid</option><option>gradient</option><option>outline</option></select></div>
+  <div><label for="anim">Animation</label><select id="anim"><option value="">none</option><option>shine</option><option>pulse</option></select></div></div>
+  <div class="row"><div><label for="style">Shape</label><select id="style"><option>flat</option><option>rounded</option><option>pill</option></select></div>
+  <div><label for="size">Size</label><select id="size"><option>sm</option><option selected>md</option><option>lg</option></select></div></div>
+  <label><input id="bd" type="checkbox" style="width:auto"> Border</label><input id="bdc" type="color" value="#ffffff" aria-label="Border colour">
+  <label for="to">Where should it link? (https://…)</label><input id="to" value="https://github.com/spooky8823/Alive-Readme">
+  <label for="alt">Alt text (optional)</label><input id="alt">
 </section>
 <section class="card">
   <div class="pv" style="background:#0d1117"><img id="pd" alt=""></div>
   <div class="pv" style="background:#fff"><img id="pl" alt=""></div>
-  <label>Markdown (README)</label><textarea id="md" readonly></textarea><button data-c="md">Copy</button>
-  <label>HTML</label><textarea id="html" readonly></textarea><button data-c="html">Copy</button>
-  <label>Image URL only</label><textarea id="url" readonly></textarea><button data-c="url">Copy</button>
+  <label for="md">Markdown (README)</label><textarea id="md" readonly></textarea><button data-c="md">Copy</button>
+  <label for="html">HTML</label><textarea id="html" readonly></textarea><button data-c="html">Copy</button>
+  <label for="url">Image URL only</label><textarea id="url" readonly></textarea><button data-c="url">Copy</button>
 </section></div></main>
 <script type="module">
 import { renderButton, toQuery, ICONS } from "./buttons/src/button-svg.js";
-const API_BASE = "https://vibifiy-buttons.YOUR-SUBDOMAIN.workers.dev"; // set after deploying the worker
+const API_BASE = "https://alive-readme-buttons.YOUR-SUBDOMAIN.workers.dev"; // set after `npm run deploy` in /buttons
 const $ = id => document.getElementById(id);
 $("icon").innerHTML = '<option value="">none</option>' + Object.keys(ICONS).map(k => `<option>${k}</option>`).join("");
-$("icon").value = "download";
+$("icon").value = "book";
+
 function update() {
   const o = { text: $("text").value, icon: $("icon").value, bg: $("bg").value, fg: $("fg").value,
-              style: $("style").value, size: $("size").value, border: $("bd").checked ? $("bdc").value : "" };
+              style: $("style").value, size: $("size").value, fill: $("fill").value, anim: $("anim").value,
+              border: $("bd").checked ? $("bdc").value : "" };
   const src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(renderButton(o));
   $("pd").src = src; $("pl").src = src;
   const q = toQuery(o), img = `${API_BASE}/btn.svg${q ? "?" + q : ""}`;
@@ -55,13 +60,22 @@ function update() {
   $("html").value = `<a href="${to}"><img src="${img}" alt="${alt}"></a>`;
   $("url").value = img;
   const msgs = [];
-  if (API_BASE.includes("YOUR-SUBDOMAIN")) msgs.push("API_BASE isn't set yet — deploy the worker and edit it at the top of this file's script.");
+  if (API_BASE.includes("YOUR-SUBDOMAIN")) msgs.push("API_BASE isn't set yet. Deploy the worker and edit it at the top of this file's script.");
   if (!/^https?:\/\//.test(to)) msgs.push("The link should start with https://");
   $("warn").style.display = msgs.length ? "block" : "none"; $("warn").textContent = msgs.join(" ");
 }
+
+// Outline buttons read best with the text in the background colour, so follow it until the user picks their own.
+let fgTouched = false;
+$("fg").addEventListener("input", () => (fgTouched = true));
+const syncFg = () => { if (!fgTouched) $("fg").value = $("fill").value === "outline" ? $("bg").value : "#ffffff"; };
+$("fill").addEventListener("input", syncFg); $("bg").addEventListener("input", syncFg);
+
 document.querySelectorAll("input,select").forEach(e => e.addEventListener("input", update));
-document.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => {
-  navigator.clipboard.writeText($(b.dataset.c).value); b.textContent = "Copied!"; setTimeout(() => b.textContent = "Copy", 1200);
+document.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", async () => {
+  try { await navigator.clipboard.writeText($(b.dataset.c).value); b.textContent = "Copied!"; }
+  catch { b.textContent = "Copy failed"; }
+  setTimeout(() => b.textContent = "Copy", 1200);
 }));
 update();
 </script></body></html>
