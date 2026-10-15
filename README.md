@@ -84,17 +84,7 @@ npm run deploy
 
 ## How it works
 
-```
-Alive-Readme
-├── index.html              the button maker page (GitHub Pages)
-└── buttons
-    ├── src
-    │   ├── button-svg.js   draws the button as an SVG
-    │   ├── brand-icons.js  brand logo paths
-    │   └── index.js        Worker entry: serves /btn.svg
-    ├── package.json
-    └── wrangler.toml
-```
+![Tree](https://alive-readme-buttons.spookyminecraftgamer.workers.dev/tree.svg?data=Alive-Readme%2F%0A++index.html%0A++blocks.html++%0A++buttons%2F%0A++++src%2F%0A++++++button-svg.js%0A++++++brand-icons.js%0A++++++button-svj.js%0A++++++index.js%0A++++++table-svg.js%0A++++++tree-svg.js+%0A++++package.json%0A++++wrangler.toml%0A++README.md&theme=dark&folder=79c0ff)
 
 `button-svg.js` is shared: the Worker uses it to serve images, and the maker page uses it to show your live preview.
 
