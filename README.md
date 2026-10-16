@@ -84,3 +84,6 @@ Brand logos belong to their respective owners and are included only so you can l
 ---
 
 <p align="center">Made with ❤️ by <a href="https://github.com/spooky8823">spooky8823</a></p>
+
+
+[![@spooky8823](https://alive-readme-buttons.spookyminecraftgamer.workers.dev/btn.svg?text=%40spooky8823&bg=3e9861&fg=d1d416&icon=x&style=pill&anim=shine)](x.com/spooky8823)
